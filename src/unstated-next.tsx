@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Context } from "react"
 
 const EMPTY: unique symbol = Symbol()
 
@@ -16,6 +16,7 @@ export type UseContainer<Value> = () => Value
 export interface Container<Value, State extends any[]> {
 	Provider: ContainerProvider<State>
 	useContainer: UseContainer<Value>
+	Context: Context<Value | typeof EMPTY>
 }
 
 export function createContainer<Value, State extends any[]>(
@@ -43,6 +44,7 @@ export function createContainer<Value, State extends any[]>(
 	return {
 		Provider,
 		useContainer,
+		Context
 	}
 }
 
