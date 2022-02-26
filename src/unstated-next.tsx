@@ -26,7 +26,7 @@ export function createContainer<Value, State extends any>(
 	const hookName = useHook.name
 		? `${useHook.name.charAt(0).toUpperCase()}${useHook.name.slice(1)}`
 		: "UnstatedNext"
-	Context.displayName = `Context${hookName}`
+	Context.displayName = hookName
 
 	function Provider({ initialState, children }: ContainerProviderProps<State>) {
 		const value = useHook(initialState)
